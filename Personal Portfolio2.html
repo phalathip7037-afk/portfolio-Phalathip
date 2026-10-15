@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์แนะนำตัว - พลาธิป ผลแสง</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Kanit', 'Prompt', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* Custom Glassmorphism Styles */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0891b2;
+            border-radius: 4px;
+        }
+        /* Animation classes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300 border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#hero" class="text-xl font-bold tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+                    Phalathip Pholsaeng
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#about" class="hover:text-cyan-500 transition-colors">เกี่ยวกับฉัน</a>
+                    <a href="#skills" class="hover:text-cyan-500 transition-colors">ทักษะ</a>
+                    <a href="#education" class="hover:text-cyan-500 transition-colors">การศึกษา</a>
+                    <a href="#experience" class="hover:text-cyan-500 transition-colors">ประวัติการทำงาน</a>
+                    <a href="#contact" class="hover:text-cyan-500 transition-colors">ติดต่อ</a>
+                </nav>
+
+                <!-- Actions: Theme Switch & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-3">
+                    <!-- Dark/Light Mode Toggle Button -->
+                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all focus:outline-none">
+                        <i id="theme-toggle-dark-icon" class="fas font-solid fa-moon hidden text-base"></i>
+                        <i id="theme-toggle-light-icon" class="fas font-solid fa-sun hidden text-base text-amber-400"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg bg-slate-200/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-cyan-500 focus:outline-none">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-slate-200/50 dark:border-slate-800/50 px-4 py-3 space-y-2">
+            <a href="#about" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-500 font-medium">เกี่ยวกับฉัน</a>
+            <a href="#skills" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-500 font-medium">ทักษะ</a>
+            <a href="#education" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-500 font-medium">การศึกษา</a>
+            <a href="#experience" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-500 font-medium">ประวัติการทำงาน</a>
+            <a href="#contact" class="mobile-link block py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-500 font-medium">ติดต่อ</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-12 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Decorative Background Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/20 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-blue-500/20 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <!-- Avatar / Profile Image -->
+                <div class="relative inline-block mb-6 animate-float">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-tr from-cyan-500 via-blue-500 to-indigo-500 shadow-xl shadow-cyan-500/20">
+                        <div class="w-full h-full rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                            <img src="1000036772.jpg" alt="พลาธิป ผลแสง" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0f172a/06b6d4?text=Phalathip';">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Greeting & Name -->
+                <h2 class="text-sm sm:text-base font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400 mb-2">
+                    ยินดีต้อนรับสู่โปรไฟล์ของฉัน 👋
+                </h2>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3">
+                    สวัสดีครับ, ผม <span class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">พลาธิป ผลแสง</span>
+                </h1>
+                
+                <!-- Tagline / Title -->
+                <p class="text-base sm:text-xl text-slate-600 dark:text-slate-300 font-light mb-6 max-w-2xl mx-auto leading-relaxed">
+                    <span class="font-normal text-slate-800 dark:text-slate-100">Digital Business Technology Specialist</span> มุ่งมั่นพัฒนาและพร้อมเรียนรู้เทคโนโลยีใหม่ ๆ
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:opacity-90 transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> ติดต่อฉัน
+                    </a>
+                    <a href="#experience" class="w-full sm:w-auto px-7 py-3 rounded-full bg-slate-200/80 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-briefcase"></i> ดูประวัติการทำงาน
+                    </a>
+                </div>
+
+                <!-- Quick Social Links -->
+                <div class="mt-8 flex items-center justify-center space-x-5 text-xl text-slate-500 dark:text-slate-400">
+                    <a href="https://www.facebook.com/share/1CBjtrQtHh/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-cyan-500 transition-colors"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/coffee_baboh?cplk=MjlqNWc2N2NyNmM2" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-cyan-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold">เกี่ยวกับฉัน</h2>
+                <div class="w-12 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Text Intro -->
+                <div class="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
+                        มุ่งมั่นพัฒนาทักษะเทคโนโลยีธุรกิจดิจิทัลและการทำงานระดับมืออาชีพ
+                    </h3>
+                    <p>
+                        ยินดีที่ได้รู้จักครับ! ผมมีความตั้งใจและความพร้อมในการนำทักษะด้านเทคโนโลยีธุรกิจดิจิทัล และประสบการณ์ฝึกงานในฝ่ายผลิตอุตสาหกรรม มาประยุกต์ใช้ในการทำงานจริงอย่างมีประสิทธิภาพ
+                    </p>
+                    <p>
+                        มีความละเอียดรอบคอบ พร้อมเรียนรู้สิ่งใหม่ ๆ และสามารถทำงานร่วมกับทีมได้อย่างราบรื่น
+                    </p>
+                    <!-- Key Strengths Grid -->
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-3.5 rounded-xl glass">
+                            <i class="fas fa-lightbulb text-cyan-500 text-xl mb-1.5"></i>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100">การแก้ปัญหา</h4>
+                            <p class="text-xs">คิดวิเคราะห์อย่างเป็นระบบ</p>
+                        </div>
+                        <div class="p-3.5 rounded-xl glass">
+                            <i class="fas fa-users text-blue-500 text-xl mb-1.5"></i>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100">การทำงานเป็นทีม</h4>
+                            <p class="text-xs">สื่อสารเปิดกว้างและมีประสิทธิภาพ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="p-6 rounded-2xl glass space-y-4 shadow-md border border-slate-200/50 dark:border-slate-800/50">
+                    <h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-800 pb-2">ข้อมูลส่วนตัว</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0"><i class="fas fa-user"></i></span>
+                            <span class="font-semibold shrink-0">ชื่อ-สกุล:</span>
+                            <span class="text-slate-600 dark:text-slate-300">พลาธิป ผลแสง</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0"><i class="fas fa-envelope"></i></span>
+                            <span class="font-semibold shrink-0">อีเมล:</span>
+                            <span class="text-slate-600 dark:text-slate-300">phalathip7037@gmail.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0"><i class="fas fa-map-marker-alt"></i></span>
+                            <span class="font-semibold shrink-0">ที่อยู่:</span>
+                            <span class="text-slate-600 dark:text-slate-300">อุดรธานี, ประเทศไทย</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="font-semibold shrink-0">การศึกษา:</span>
+                            <span class="text-slate-600 dark:text-slate-300">ปวส. สาขาเทคโนโลยีธุรกิจดิจิทัล</span>
+                        </li>
+                    </ul>
+                    <div class="pt-2">
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-600 dark:text-cyan-400 hover:underline">
+                            <i class="fas fa-file-download"></i> ดาวน์โหลด Resume (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-slate-100/50 dark:bg-slate-900/40 rounded-3xl my-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold">ทักษะ</h2>
+                <div class="w-12 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <!-- Single card containing all skills -->
+            <div class="p-6 sm:p-8 rounded-2xl glass space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Skill 1 -->
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-slate-800 dark:text-slate-100">Team Collaboration</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">การทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ</p>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-slate-800 dark:text-slate-100">Critical Thinking</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">การคิดวิเคราะห์เชิงตรรกะสำหรับการทำงานและการแก้ไขปัญหา</p>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-slate-800 dark:text-slate-100">Adaptability</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">การปรับตัวและเรียนรู้ไว พร้อมเรียนรู้เทคโนโลยีใหม่และปรับตัวเข้ากับวัฒนธรรมขององค์กรได้อย่างรวดเร็ว</p>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-slate-800 dark:text-slate-100">Time Management</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">การบริหารจัดการเวลา</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section (การศึกษา) -->
+        <section id="education" class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-graduation-cap text-cyan-500 text-2xl"></i> ประวัติการศึกษา
+                </h2>
+                <div class="w-12 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5">
+                <!-- Education Item 1 (ปวส.) -->
+                <div class="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1.5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                                ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">สาขาเทคโนโลยีธุรกิจดิจิทัล</h3>
+                        <p class="text-sm font-medium text-slate-600 dark:text-slate-300">วิทยาลัยเทคโนโลยีบริหารธุรกิจอุดรธานี</p>
+                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">พ.ศ. 2564 - 2566</p>
+                    </div>
+                    <div class="sm:text-right shrink-0">
+                        <div class="text-xs font-semibold text-cyan-500">เกรดเฉลี่ยสะสม</div>
+                        <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-100">3.04</div>
+                    </div>
+                </div>
+
+                <!-- Education Item 2 (ปวช.) -->
+                <div class="p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1.5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                                ระดับประกาศนียบัตรวิชาชีพ (ปวช.)
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">สาขาคอมพิวเตอร์ธุรกิจ</h3>
+                        <p class="text-sm font-medium text-slate-600 dark:text-slate-300">วิทยาลัยเทคโนโลยีบริหารธุรกิจอุดรธานี</p>
+                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">พ.ศ. 2561 - 2564</p>
+                    </div>
+                    <div class="sm:text-right shrink-0">
+                        <div class="text-xs font-semibold text-cyan-500">เกรดเฉลี่ยสะสม</div>
+                        <div class="text-2xl font-extrabold text-slate-800 dark:text-slate-100">3.05</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section (ประวัติการทำงาน) -->
+        <section id="experience" class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-briefcase text-cyan-500 text-2xl"></i> ประวัติการทำงาน / ประสบการณ์
+                </h2>
+                <div class="w-12 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-2 border-cyan-500/30 ml-4 sm:ml-28 space-y-6">
+                <!-- Work Experience 1: Fujitsu -->
+                <div class="relative pl-6 sm:pl-8">
+                    <div class="hidden sm:block absolute -left-28 top-0.5 w-20 text-right text-xs font-semibold text-cyan-600 dark:text-cyan-400">
+                        2564 - 2565
+                    </div>
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-slate-50 dark:ring-slate-950"></div>
+                    
+                    <div class="p-5 rounded-2xl glass shadow-sm hover:shadow-md transition-shadow">
+                        <span class="sm:hidden text-xs font-semibold text-cyan-600 dark:text-cyan-400 block mb-1">2564 - 2565</span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">บริษัท ฟูจิตสึ (ประเทศไทย) จำกัด</h3>
+                            <span class="px-2.5 py-0.5 text-xs rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-medium">ระดับ ปวส. (ฝึกงาน 1 ปี)</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">นักศึกษาฝึกงาน — ฝ่ายผลิต แอร์คอมเพรสเซอร์</p>
+                        <ul class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed list-disc list-inside space-y-1">
+                            <li>ประกอบชิ้นส่วนแอร์คอมเพรสเซอร์และขันนอตสกรูยึดชิ้นงาน</li>
+                            <li>ตรวจสอบความเรียบร้อยของชิ้นงานสำหรับการขั้นตอนต่อไป</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Work Experience 2: Sony -->
+                <div class="relative pl-6 sm:pl-8">
+                    <div class="hidden sm:block absolute -left-28 top-0.5 w-20 text-right text-xs font-semibold text-cyan-600 dark:text-cyan-400">
+                        2563 - 2564
+                    </div>
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-slate-50 dark:ring-slate-950"></div>
+
+                    <div class="p-5 rounded-2xl glass shadow-sm hover:shadow-md transition-shadow">
+                        <span class="sm:hidden text-xs font-semibold text-cyan-600 dark:text-cyan-400 block mb-1">2563 - 2564</span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">บริษัท โซนี่ เทคโนโลยี (ประเทศไทย) จำกัด</h3>
+                            <span class="px-2.5 py-0.5 text-xs rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-medium">ระดับ ปวช. (ฝึกงาน 6 เดือน)</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">นักศึกษาฝึกงาน — ฝ่ายผลิตกล้องติดรถยนต์</p>
+                        <ul class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed list-disc list-inside space-y-1">
+                            <li>ขันน็อตสกรูให้กับตัวกล้องตามแผนงานที่ได้รับ</li>
+                            <li>ตรวจสอบความเรียบร้อยของชิ้นงาน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold">ติดต่อฉัน</h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">สนใจร่วมงานหรือพูดคุยสอบถาม สามารถติดต่อได้ผ่านช่องทางด้านล่างครับ</p>
+                <div class="w-12 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="max-w-xl mx-auto">
+                <!-- Direct Contacts List -->
+                <div class="space-y-4">
+                    <div class="p-6 rounded-2xl glass space-y-5">
+                        <h3 class="text-lg font-bold">ข้อมูลติดต่อ</h3>
+
+                        <a href="mailto:phalathip7037@gmail.com" class="flex items-center gap-4 group">
+                            <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-500 group-hover:bg-cyan-500 group-hover:text-white transition-all flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">อีเมล</div>
+                                <div class="font-medium text-sm sm:text-base group-hover:text-cyan-500 transition-colors">phalathip7037@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="tel:0988646410" class="flex items-center gap-4 group">
+                            <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-500 group-hover:bg-cyan-500 group-hover:text-white transition-all flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">เบอร์โทรศัพท์</div>
+                                <div class="font-medium text-sm sm:text-base group-hover:text-cyan-500 transition-colors">098-864-6410</div>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-lg shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">ที่อยู่</div>
+                                <div class="font-medium text-sm sm:text-base">อุดรธานี, ประเทศไทย</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 dark:text-slate-400 glass">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>© 2026 พลาธิป ผลแสง. All rights reserved. ออกแบบและพัฒนาด้วย Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // --- Dark/Light Mode Theme Switcher ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check theme on page load
+        if (localStorage.getItem('color-theme') === 'light' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
